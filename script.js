@@ -41,7 +41,7 @@ myPlaceholder = inputEle.placeholder;
 userid.addEventListener('focusin', function() {
     // userid.value => input에 입력된 텍스트
     // userid.value.length => input 텍스트 길이
-    if(userid.value >= 0) {
+    if(userid.value.length == 0) {
       // 0 이상일때
       inputEle.placeholder = ' ';
       dTxt.style.display = "block";
@@ -52,7 +52,7 @@ userid.addEventListener('focusin', function() {
 userid.addEventListener('focusout', function() {
     // userid.value => input에 입력된 텍스트
     // userid.value.length => input 텍스트 길이
-    if(userid.value >= 0) {
+    if(userid.value.length == 0) {
       // 0 이상일때
       inputEle.placeholder = '전화번호, 사용자 이름 또는 이메일';
       dTxt.style.display = "none";
@@ -69,32 +69,29 @@ let rigthTxt = document.querySelector('.rigth-txt');
 
 
 // 커서가 클릭 되었을 때
-userpw.addEventListener('focusin', function() {
+userpw.addEventListener("keyup", (event) => {
     // userid.value => input에 입력된 텍스트
     // userid.value.length => input 텍스트 길이
-    if(userpw.value >= 0) {
+    if(userpw.value.length > 0) {
       // 0 이상일때
       rigthTxt.style.display = "block";
+      } else {
+        rigthTxt.style.display = "none";
       }
-  })
-  
-// 커서를 아웃 했을 때
-userpw.addEventListener('focusout', function() {
-    // userid.value => input에 입력된 텍스트
-    // userid.value.length => input 텍스트 길이
-    if(userpw.value >= 0) {
-      // 0 이상일때
-      rigthTxt.style.display = "none";
-    
-      }
-  })
+});
+
+
+
+let count = 0;
 
 // 비밀번호 표시 클릭했을 때
 rigthTxt.addEventListener('click', function(e) {
-    if (userpw.value.length >= 0) {        // 체크박스에 체크되어 있으면
-        userpw.type = 'text';       // input 요소의 타입을 text 타입으로 변경
-    } else if(rigthTxt.count) {                     // 그렇지 않으면
-        userpw.type = 'password'; 
+    if (userpw.value.length > 0 && count % 2 == 0) {       
+        userpw.type = 'text';   // input 요소의 타입을 text 타입으로 변경
+        count++;    
+    } else {                     // 그렇지 않으면
+        userpw.type = 'password';
+        count++;
     }
   })
 
