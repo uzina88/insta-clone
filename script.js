@@ -93,7 +93,7 @@ userpw.addEventListener('focusout', function() {
 rigthTxt.addEventListener('click', function(e) {
     if (userpw.value.length >= 0) {        // 체크박스에 체크되어 있으면
         userpw.type = 'text';       // input 요소의 타입을 text 타입으로 변경
-    } else {                     // 그렇지 않으면
+    } else if(rigthTxt.count) {                     // 그렇지 않으면
         userpw.type = 'password'; 
     }
   })
