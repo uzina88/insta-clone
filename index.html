@@ -3,11 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>instagram</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://kit.fontawesome.com/d6979414de.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    
-    <script src="./style.css"></script>
+<body class="body-wrap">
+    <div class="wrapper">
+        <form action="" id="join-form">
+            <div class="form-t-box form-box-st">
+                <h1 class="logo"><img src="./assets/images/logo-light.png" alt=""></h1>
+                <p class="pd-st">
+                    <input id="userid" placeholder="전화번호, 사용자 이름 또는 이메일" type="text">
+                    <span class="d-txt">전화번호, 사용자 이름 또는 이메일</span>
+                </p>
+                <p class="pd-st">
+                    <input id="userpw" class="userpw" type="password" placeholder="비밀번호">
+                    <span class="rigth-txt">비밀번호 표시</span>
+                </p>
+                <button class="pd-st-blue pd-st" type="submit">로그인</button>
+                
+                <p class="or-login">
+                    <span class="border-gray"></span>
+                    <span class="border-txt"> 또는 </span>
+                    <span class="border-gray"></span>
+                </p>
+
+                <p class="fb-login m20"><i class="fa-brands fa-square-facebook"></i> Facebook으로 로그인</p>
+                <p class="pw-bt-txt m20">비밀번호를 잊으셨나요?</p>
+               
+            </div>
+
+            <div class="form-bt-box form-box-st">
+                <p>계정이 없으신가요? <span class="blue">가입하기</span></p>
+            </div>
+
+            <h4 class="app-txt">앱을 다운로드하세요.</h4>
+            <div class="app-btn">
+                <button><img src="./assets/images/app-store.png" alt=""></button>
+                <button><img src="./assets/images/gg-play.png" alt=""></button>
+            </div>
+        
+        </form>
+
+        <footer>
+            <ul class="ft-box">
+                <li><button>블로그</button></li>
+                <li><button>채용정보</button></li>
+                <li><button>도움말</button></li>
+                <li><button>API</button></li>
+                <li><button>개인정보처리방침</button></li>
+                <li><button>약관</button></li>
+                <li><button>위치</button></li>
+                <li><button>instagram Lite</button></li>
+                <li><button class="mode-btn">Darkmode</button></li>
+            </ul>
+            <p>ⓒ 2024 Instagram from Meta</p>
+        </footer>
+
+    </div>
+  
+    <script src="./script.js"></script>
 </body>
 </html>
