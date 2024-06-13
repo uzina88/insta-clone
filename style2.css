@@ -133,7 +133,7 @@ body.dark .light-logo {
   pointer-events: none;
   transition: all 200ms ease-in-out;
 }
-
+/* input 텍스트 이동 active 가상 클래스 */
 .animate-input.active {
   padding: 4px 8px 0;
 }
