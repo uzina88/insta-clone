@@ -1,117 +1,71 @@
-function updateInputState(inputV, activeVar){
-    // trim() 공백제거
-    // 공백 제거한 value 값의 길이가 0보다 클 때는 ture
-    // 사용자가 input 창에 입력한 값이 하나라도 있냐
-    if(inputV.value.trim().length > 0){
-      inputV.parentElement.classList.add('active'); 
-      // 값이 있을 때는 ture
-      activeVar = true;
-    } else {
-      // value 값의 길이가 없을 때 false
-      inputV.parentElement.classList.remove('active');  
-      // 값이 없을 때는 false
-      activeVar = false;
-    }
-    // 함수 실행 후 퉤 뱉어줘라(실행)
-    // return : 해당 함수가 실행된 후 함수 호출한 위치로 전달되는 값
-    return activeVar; // true, false
-  }
-  
-  // --------------------------------------------------------------------
-  let userid2 = document.getElementById('userid2');
-  let userpw2 = document.getElementById('userpw2');
+let joinBtn = document.getElementById('join-btn');
+let animateInput = document.querySelectorAll('.animate-input');
+// console.log(animateInput) 대괄호(배열)
+// 복합 대입 연산자
+let emailAct = nameAct = idAct = pwAct = false;
+//console.log(emailAct, nameAct, idAct, pwAct)
 
-  // 복합연산자
-  // let idActive = pwActive = false;
-  let idActive = false;
-  let pwActive = false;
-  
-  let submitBtn = document.getElementById('submit-btn');
-  
-  function handleInput(e){
-    // e는 매개변수.target
-    // e.target => 이벤트가 일어나는 대상
-    let input = e.target;
-    let type = input.getAttribute("type");
+let userEmail = document.getElementById('user-email');
+let userName = document.getElementById('user-name');
+let userId = document.getElementById('user-id');
+let userPw = document.getElementById('user-pw');
+
+let pwBtn = document.getElementById('pw-btn');
+
+function updateInputState(val, activeVar) {
+  if(val.value.trim().length > 0){
+    // animate-input 에 active class add
+    val.parentElement.classList.add('active');
+    activeVar = true;
+  } else {
+     // animate-input 에 active class remove
+    val.parentElement.classList.remove('active');
+    activeVar = false;
+  }
+  return activeVar;
+  // updateInputState 함수에 true, false를 넘겨준다.
+}
+
+// "=>"" arrow funciton
+animateInput.forEach((item) => {
+  let input = item.querySelector('input');
+  // input을 배열(반복) console.log(input)
+  input.addEventListener('keyup', ()=> {
+  // keyup 이벤트를 해야지 로그 찍힘 console.log(input)
+    if(input == userEmail) {
+      emailAct = updateInputState(input, emailAct);
+    } else if(input == userName) {
+      nameAct = updateInputState(input, nameAct);
+    } else if(input == userId) {
+      idAct = updateInputState(input, idAct);
+    } else if(input == userPw) {
+      pwAct = updateInputState(input, pwAct);
+    }
     
-    if(type == "text"){
-      // return 값 => true, false 값 들어옴.
-      idActive = updateInputState(input, idActive); 
+    let allTrue = emailAct && nameAct && idAct && pwAct;
+    if(allTrue) {
+      // allTrue 안 값이 모두 참일 때 
+      // joinBtn disabled 속성 remove
+      joinBtn.removeAttribute('disabled');
+      // j-Query에서는 .attr('disabled', true / false) 사용 가능
+      // vanilla JS에서는 속성 제거할 때 flase X | removeAttribute() 사용!
+      // joinBtn.setAttribute('disabled', false);
     } else {
-      // type이 텍스트가 아닐 경우 => password]
-      // return 값 => true, false 값 들어옴.
-      pwActive = updateInputState(input, pwActive);
+      joinBtn.setAttribute('disabled', true);
     }
-  
-    // idActive && pwActive 값이 모두 참일 때 => input.value.lenght > 0
-    if(idActive && pwActive){
-      // disabled 제거
-      submitBtn.removeAttribute('disabled') 
-    } else {
-      // idActive나 pwActive 중 둘 중 하나라도 false 일 때
-      // disabled 추가
-      submitBtn.setAttribute('disabled', true);
-    }
-  }
-  
-  userid2.addEventListener('keyup',handleInput);
-  userpw2.addEventListener('keyup',handleInput);
-  
-  
-  // 비밀번표 표시변경 -------------------------------------------------------
-  let pwVisible = document.getElementById('pw-visible');
-  
-  function pwMode() {
-    if(userpw2.getAttribute('type') == 'password') {
-      // user의 type이 password일 경우
-      // 1. 비밀번호 표시 클릭 = userpw (input) type => text로 변경
-      // 2. pwVisible.innerHTML = "숨기기"로 변경
-      userpw2.setAttribute('type','text');
-      pwVisible.innerHTML = '숨기기';
-      pwVisible.style.color = 'blue';
-    } else {  
-      // userpw의 type이 text일 경우
-      // 1. 숨기기 => userpw type => password
-      // 2. pwVisible.innerHTML => '비밀번호 표시'로 변경
-      userpw2.setAttribute('type','password');
-      pwVisible.innerHTML = '비밀번호 표시';
-      pwVisible.style.color = '#000';
-    }
-  }
-  pwVisible.addEventListener('click', pwMode);
-  
-  
-  // 다크모드  -------------------------------------------------------
-  let modeBtn = document.getElementById('mode-toggle');
-  
-  function modeToggle(e){
-    e.preventDefault();
-    // 1. body 태그에 dark 라는 clss toggle
-    // dark 라는 class가 있으면 remove, 없느면 add
-    // console.log(document.querySelector('body'))
-    let body = document.querySelector('body');
-    body.classList.toggle('dark');
-  
-    // body에 dark라는 클래스가 있을 때
-    // modeBtn.innerHTML = "Lightmode"
-    // classList.contans() ture, false 값 확인
-    // console.log(body.classList.contains('dark'));
-  
-    // if 조건문 ------------------------------------------------------
-    // if(body.classList.contains('dark')) {
-    //   modeBtn.innerHTML = 'Lightmode';
-    // } else {
-    //   modeBtn.innerHTML = 'Darkmode';
-    // }
-  
-    // body에 dark라는 클래스가 없을 때
-    // modeBtn.innerHTMl = "Darkmode"
-  
-    // 삼항연산자 ------------------------------------------------------
-    // 조건 ? 참일 때 : 거짓일 때
-    // body.classList.contains('dark') 이 조건
-    // ? 'Lightmode' : 'Darkmode'; 참일때 Lightmode 거짓일 때 Darkmode
-    modeBtn.innerHTML = body.classList.contains('dark') ? 'Lightmode' : 'Darkmode';
-  }
-  
-  modeBtn.addEventListener('click', modeToggle);
+  })
+})
+
+
+function modeToggle(){
+  // 삼항연산자
+  // 조건 ? true : false
+  // 조건 ? true(참일때 실행할 값) : false(거짓일 때 실행할 값)
+  // userPw의 type password => text | pwBtn.innerHTML = '숨기기'
+  let pwType = userPw.getAttribute('type') == 'password';
+  // userPw의 type password => text | pwBtn.innerHTML = '비밀번호 표시'
+  userPw.setAttribute('type', pwType ? 'text' : 'password');
+  pwBtn.innerHTML = pwType ? '숨기기' : '비밀번호 표시';
+}
+
+pwBtn.addEventListener('click', modeToggle);
