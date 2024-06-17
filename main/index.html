@@ -20,7 +20,7 @@
               <img src="../assets/images/logo-light.png" alt="insta-logo" class="logo-light">
           </h1>
           <ul class="gnb-global">
-            <li><i class="fa-regular fa-square-plus"></i></li>
+            <li class="newpost-open-btn"><i class="fa-regular fa-square-plus"></i></li>
             <li><i class="fa-regular fa-compass"></i></li>
             <li><i class="fa-regular fa-heart"></i></li>
             <li><i class="fa-solid fa-magnifying-glass"></i></li>
@@ -29,9 +29,9 @@
 
       <div class="contents">
 
-        <div class="left-box box-style">
+        <div class="left-box ">
 
-          <div class="feed">
+          <div class="feed box-style post-item">
             <div class="profile-box">
               <h2 class="profile gird1">
                 <img src="./images/jina.jpg" alt="">
@@ -40,7 +40,9 @@
                 <strong>시크뇽</strong>
                 <span>Dajeaon, South Korea</span>
               </p>
-              <i class="fa-solid fa-ellipsis gird3"></i>
+              <button class="popup-menu-btn">
+               <i class="fa-solid fa-ellipsis gird3"></i>
+              </button>
             </div>
             <div class="feed-img">
               <img src="./images/cat1.jfif" alt="">
@@ -68,26 +70,32 @@
                 </p>
                 <span class="comment-time">2시간 전</span>
               </div>
-              <div class="comment-write">
-                <form action="" id="write">
-                  <input type="text" placeholder="댓글 달기...">
-                  <button type="button">게시</button>
-                </form>
-              </div>
+              
+            </div>
+
+            <div class="comment-write">
+              <form action="" id="write">
+                <input type="text" placeholder="댓글 달기...">
+                <button type="button">게시</button>
+              </form>
             </div>
 
           </div> <!--feed-->
 
-          <div class="feed">
+         
+
+          <div class="feed box-style post-item">
             <div class="profile-box">
               <h2 class="profile">
                 <img src="./images/jina.jpg" alt="">
               </h2>
-              <p>
+              <p class="gird2">
                 <strong>시크뇽</strong>
                 <span>Dajeaon, South Korea</span>
               </p>
-              <i class="fa-solid fa-ellipsis"></i>
+              <button class="popup-menu-btn">
+                <i class="fa-solid fa-ellipsis gird3"></i>
+               </button>
             </div>
             <div class="feed-img">
               <img src="./images/cat2.jfif" alt="">
@@ -115,26 +123,33 @@
                 </p>
                 <span class="comment-time">2시간 전</span>
               </div>
-              <div class="comment-write">
-                <form action="" id="write">
-                  <input type="text" placeholder="댓글 달기...">
-                  <button type="button">게시</button>
-                </form>
-              </div>
+              
             </div>
 
+            <div class="comment-write">
+              <form action="" id="write">
+                <input type="text" placeholder="댓글 달기...">
+                <button type="button">게시</button>
+              </form>
+            </div>
+  
+
+            
+           
           </div> <!--feed-->
+
+          
 
 
         </div> <!--left-box-->
 
         <div class="right-box box-style">
 
-          <div class="profile-box">
+          <div class="profile-box profile-box2">
             <h2 class="profile profile2">
               <img src="./images/jina.jpg" alt="">
             </h2>
-            <p>
+            <p class="gird2">
               <strong>시크뇽</strong>
               <span>유지나</span>
             </p>
@@ -149,7 +164,7 @@
             <h2 class="profile">
               <img src="./images/jina.jpg" alt="">
             </h2>
-            <p>
+            <p class="gird2">
               <strong>시크뇽1</strong>
               <span>유지나</span>
             </p>
@@ -157,9 +172,9 @@
 
           <div class="profile-box recommended">
             <h2 class="profile">
-              <img src="./images/jina.jpg" alt="">
+              <img src="./images/cat2.jfif" alt="">
             </h2>
-            <p>
+            <p class="gird2">
               <strong>시크뇽2</strong>
               <span>유지나</span>
             </p>
@@ -169,7 +184,7 @@
             <h2 class="profile">
               <img src="./images/jina.jpg" alt="">
             </h2>
-            <p>
+            <p class="gird2">
               <strong>시크뇽3</strong>
               <span>유지나</span>
             </p>
@@ -177,9 +192,9 @@
 
           <div class="profile-box recommended">
             <h2 class="profile">
-              <img src="./images/jina.jpg" alt="">
+              <img src="./images/cat1.jfif" alt="">
             </h2>
-            <p>
+            <p class="gird2">
               <strong>시크뇽4</strong>
               <span>유지나</span>
             </p>
@@ -191,5 +206,38 @@
 
   </div> <!--wrapper-->
 
+
+
+  <div class="overlay"></div>
+  <div id="newPost" class="new-post bdr">
+    <h2>새 게시물 만들기</h2>
+    <div class="post-img">
+      <img src="./images/9042787_media_image_list_icon.svg" alt="">
+      <p>포스트 이미지 추가</p>
+    </div>
+    <input type="file">
+    <textarea name="" id="post-file-txt" placeholder="문구를 입력하세요..."></textarea>
+    <button type="submit" class="blue-bg bdr" >공유하기</button>
+  </div>
+  <div class="close-btn">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+
+
+  <div class="popup-menu" id="popup-menu">
+    <ul>
+      <li><a href=""><button class="del-btn">삭제</button></a></li>
+      <li><a href=""><button>수정</button></a></li>
+      <li><a href=""><button>다른 사람에게 좋아요 수 숨기기</button></a></li>
+      <li><a href=""><button>댓글 기능 해제</button></a></li>
+      <li><a href=""><button>게시물로 이동</button></a></li>
+      <li><a href=""><button>공유 대상...</button></a></li>
+      <li><a href=""><button>링크 복사</button></a></li>
+      <li><a href=""><button>퍼가기</button></a></li>
+      <li><a href=""><button>취소</button></a></li>
+    </ul>
+  </div>
+
+  <script src="./script.js"></script>
 </body>
 </html>

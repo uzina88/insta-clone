@@ -56,16 +56,11 @@ header{
   display: flex;
   justify-content: space-between;
   margin: 60px auto;
-  width: 50%;
+  width: 60%;
 }
 
-.box-style{
-  border: 1px solid var(--box-border-color);
-  border-radius: 3px;
-}
-
-.left-box{width: 70%;}
-.right-box{width: 27%;background-color: #fff;}
+.left-box{width: 67%;}
+.right-box{width: 30%;background-color: #fff;height:fit-content;padding:15px;}
 .profile{width: 35px;}
 .profile2{width: 50px;}
 
@@ -87,8 +82,11 @@ header{
   font-size: 13px;
   color: var(--txt-second-color);
 }
+.box-style{border: 1px solid var(--box-border-color);
+  border-radius: 3px;}
+.feed{margin-bottom: 20px;}
 .feed-img img{
-  height: 500px;
+  height: 600px;
   object-fit: cover;
 }
 
@@ -99,4 +97,146 @@ header{
 .glow2{
   flex-grow: 1;
   text-align: left;
+}
+.comment-box {padding: 10px 15px;}
+.comment-box button{font-size: 20px;margin-right:10px;}
+.comment-box button:last-child{margin:0;}
+.comment-box > p{padding: 12px 0;}
+.comment-time{font-size: 14px;color: var(--txt-second-color);padding: 10px 0;display: block;}
+
+.comment-write{border-top: 1px solid var(--box-border-color);padding:15px 20px;}
+#write{
+  display: flex;
+  justify-content: space-between;
+}
+#write button{color: var(--light-blue);font-size: 14px;font-weight: bold;}
+
+
+.view-txt{display: flex;justify-content: space-between;padding: 10px 0;}
+.view-txt h3{font-size: 15px;color: var(--txt-second-color);}
+.view-txt span{color: var(--txt-color);
+  font-size: 14px;font-weight: bold; 
+}
+
+.profile-box2{padding: 0px!important;}
+.recommended{padding: 8px 0;}
+
+.blue-bg{background-color: var(--light-blue);}
+.bdr{border-radius: 3px;}
+
+
+/* 새 게시물 올리기 */
+.newpost-open-btn{cursor: pointer;}
+.new-post {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: auto;
+  width: 400px;
+  padding: 30px;
+  z-index: 100;
+  display: none;
+  /* transform: translateX(-200px); */
+  transition: transform 300ms ease-in-out;
+}
+.new-post.active {
+  display: block;
+  /* transform: translateX(0); */
+}
+.new-post h2{font-size: 20px;text-align: center;}
+.post-img {height: 400px;text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;}
+.post-img img{width: 80px;text-align: center;margin: 0 auto;display: block;}
+.new-post textarea{width: 100%;height: 100px;margin: 15px 0;
+padding: 7px;border: 1px solid var(--box-border-color);}
+.new-post button{display: block;width: 100%;padding: 10px;color: #fff;font-weight: bold;font-size: 16px;}
+
+/* 검은색 배경 */
+.overlay {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity 500ms;
+}
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+/* close btn */
+.close-btn{
+  position: absolute;
+  right:30px;
+  top:30px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+}
+.close-btn.active{
+  display: block;
+}
+
+/* 더보기 메뉴 */
+.popup-menu{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: auto;
+  width: 300px;
+  z-index: 100;
+  border-radius: 10px;
+  text-align: center;
+  display: none;
+  /* transform: translateX(-200px); */
+  transition: transform 300ms ease-in-out;
+}
+.popup-menu.active {
+  display: block;
+  /* transform: translateX(0); */
+}
+.popup-menu-btn i{font-size: 20px;cursor: pointer;}
+.popup-menu li{padding: 10px;border-bottom: 1px solid var(--box-border-color);}
+.popup-menu li:last-child{border: 0;}
+.popup-menu li a{font-size: 16px;}
+.popup-menu li a button{cursor: pointer;}
+.popup-menu li a button:hover{color: var(--light-blue);}
+.del-btn{color: darkred;font-weight: bold;}
+
+
+
+
+
+
+
+
+/* 반응형 */
+
+@media screen and (max-width: 1280px) {
+  .contents{width: 80%;}
+  header{padding:20px 30px;}
+  .feed-img img{height: 500px;}
+}
+
+
+@media screen and (max-width: 991px) {
+  .contents{width: 90%;}
+  header{padding:20px 30px;}
+  .left-box {width: 100%;}
+  .right-box{display: none;}
+  .feed-img img{height: 500px;}
+}
+
+@media screen and (max-width: 768px) {
+  .feed-img img{height: 400px;}
 }
